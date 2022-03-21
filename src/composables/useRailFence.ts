@@ -41,7 +41,6 @@ const railFenceDecrypt = (message: string, rows: number) => {
       }
     }
   }
-  console.log(res)
   let result = []
   row = 0
   col = 0
