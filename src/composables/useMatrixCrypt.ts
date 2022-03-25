@@ -12,8 +12,32 @@ const matrixEncrypt = (message: string, key: string) => {
 }
 
 const matrixDecrypt = (message: string, key: string) => {
-
+ const indexes = key.split('-').map((i) => i - 1)
+ let result = ''
+  
+  let matrix = message.match(new RegExp('.{1,' + indexes.length + '}', 'g')).map((e) => {
+    if(indexes.length === e.length){
+      for(let i = indexes.length - 1; i >= 0; i--){
+        result += e[indexes[i]]
+      }
+    }else{
+      let length = e.length
+      let reducedIndexes = indexes.filter((e) => e < length)
+       console.log(reducedIndexes)
+   
+      for(let i = reducedIndexes.length - 1; i >= 0; i--){
+        result += e[reducedIndexes[i]]
+      }
+    }
+    
+  })
+  
+  return result
+  
+  
 }
+
+
 
 export default () => ({
   matrixEncrypt,

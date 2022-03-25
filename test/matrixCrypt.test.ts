@@ -12,6 +12,7 @@ test('encrypt with 4 column key', async () => {
   const key = '3-1-4-2'
 
   expect(matrixEncrypt(message, key)).toEqual('YCPRGTROHAYPAOS')
+  expect(matrixDecrypt('YCPRGTROHAYPAOS', key)).toEqual('CRYPTOGRAPHYOSA')
 })
 
 test('encrypt with 5 column key', async () => {
