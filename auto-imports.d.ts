@@ -58,6 +58,7 @@ declare global {
   const useCeasarCrypt: typeof import('/src/composables/useCeasarCrypt')['default']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useMatrixCipher: typeof import('/src/composables/useMatrixCipher')['default']
   const useMatrixCrypt: typeof import('/src/composables/useMatrixCrypt')['default']
   const useRailFence: typeof import('/src/composables/useRailFence')['default']
   const useSlots: typeof import('vue')['useSlots']
