@@ -1,3 +1,5 @@
+import messageToMatrix from "./messageToMatrix";
+
 const isKeyValid = (key: string) => /^(?:\d+-)*\d+$/.test(key)
   && key.split('-')
     .map(i => +i)
@@ -8,27 +10,15 @@ const encrypt = (message: string, key: string) => {
   if (!isKeyValid(key)) throw new Error('Invalid key')
 
   const indexes = key.split('-').map((i: any) => i - 1)
-  
-  const chunks = message.split('')
-    .reduce((accumulator: string[][], char: string, index: number) => {
-      accumulator[index % indexes.length] ??= []
-      accumulator[index % indexes.length].push(char)
-      return accumulator
-    }, [])
-
-  return transpose(indexes.map(i => chunks[i])).flat().join('')
+  const matrix = messageToMatrix(message, indexes.length)
+  return transpose(indexes.map(i => matrix[i])).flat().join('')
 }
 
 const decrypt = (message: string, key: string) => {
   if (!isKeyValid(key)) throw new Error('Invalid key')
 
   const indexes = key.split('-').map((i: any) => i - 1)
-
-  const matrix = message.split('').reduce((accumulator: any[][], char, index) => {
-    accumulator[index % indexes.length] ??= []
-    accumulator[index % indexes.length].push(char)
-    return accumulator
-  }, [])
+  const matrix = messageToMatrix(message, indexes.length)
 
   // NOTE: We're joining characters after transposing to remove nulls in the array
   const transposed = transpose(matrix)

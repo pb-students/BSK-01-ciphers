@@ -56,6 +56,7 @@ declare global {
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCeasarCrypt: typeof import('/src/composables/useCeasarCrypt')['default']
+  const useColumnarTranspositionCipher: typeof import('/src/composables/useColumnarTranspositionCipher')['default']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useMatrixCipher: typeof import('/src/composables/useMatrixCipher')['default']
