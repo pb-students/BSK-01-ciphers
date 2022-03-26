@@ -1,34 +1,44 @@
-const { railFenceEncrypt, railFenceDecrypt } = useRailFence()
+const { encrypt, decrypt } = useRailFence()
+const message = 'CRYPTOGRAPHY'
 
-test('encrypt and decrypt with n = 3', async () => {
-  const message = 'CRYPTOGRAPHY'
+test('encrypt with n = 3', async () => {
   const n = 3
-
-  expect(railFenceEncrypt(message, n)).toEqual('CTARPORPYYGH')
-  expect(railFenceDecrypt(railFenceEncrypt(message, n), n)).toEqual(message)
+  expect(encrypt(message, n)).toEqual('CTARPORPYYGH')
 })
 
-test('encrypt and decrypt with n = 4', async () => {
-  const message = 'CRYPTOGRAPHY'
+test('encrypt with n = 4', async () => {
   const n = 4
-
-  expect(railFenceEncrypt(message, n)).toEqual('CGRORYYTAHPP')
-  expect(railFenceDecrypt(railFenceEncrypt(message, n), n)).toEqual(message)
+  expect(encrypt(message, n)).toEqual('CGRORYYTAHPP')
 })
 
-test('encrypt and decrypt with n = 5', async () => {
-  const message = 'CRYPTOGRAPHY'
+test('encrypt with n = 5', async () => {
   const n = 5
+  expect(encrypt(message, n)).toEqual('CARRPYGHPOYT')
 
-  expect(railFenceEncrypt(message, n)).toEqual('CARRPYGHPOYT')
-  expect(railFenceDecrypt(railFenceEncrypt(message, n), n)).toEqual(message)
-  
 })
 
-test('encrypt and decrypt with n = 6', async () => {
-  const message = 'CRYPTOGRAPHY'
+test('encrypt with n = 6', async () => {
   const n = 6
+  expect(encrypt(message, n)).toEqual('CHRPYYAPRTGO')
+})
 
-  expect(railFenceEncrypt(message, n)).toEqual('CHRPYYAPRTGO')
-  expect(railFenceDecrypt(railFenceEncrypt(message, n), n)).toEqual(message)
+test('decrypt with n = 3', async () => {
+  const n = 3
+  expect(decrypt('CTARPORPYYGH', n)).toEqual(message)
+})
+
+test('decrypt with n = 4', async () => {
+  const n = 4
+  expect(decrypt('CGRORYYTAHPP', n)).toEqual(message)
+})
+
+test('decrypt with n = 5', async () => {
+  const n = 5
+  expect(decrypt('CARRPYGHPOYT', n)).toEqual(message)
+
+})
+
+test('decrypt with n = 6', async () => {
+  const n = 6
+  expect(decrypt('CHRPYYAPRTGO', n)).toEqual(message)
 })

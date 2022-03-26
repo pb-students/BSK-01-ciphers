@@ -1,4 +1,4 @@
-const railFenceEncrypt = (message: string, rows: number) => {
+const encrypt = (message: string, rows: number) => {
   const res: string[][] = [...Array(rows).keys()].map(() => [])
   for (let i = 0; i < message.length; ++i) {
     const k = i % (rows * 2 - 2)
@@ -8,7 +8,7 @@ const railFenceEncrypt = (message: string, rows: number) => {
   return res.flat().join('')
 }
 
-const railFenceDecrypt = (message: string, rows: number) => {
+const decrypt = (message: string, rows: number) => {
   const res: string[][] = [...Array(rows).keys()].map(() => [])
   let directory = null;
   let row = 0;
@@ -69,6 +69,6 @@ const railFenceDecrypt = (message: string, rows: number) => {
 
 
 export default () => ({
-  railFenceEncrypt,
-  railFenceDecrypt
+  encrypt,
+  decrypt
 })

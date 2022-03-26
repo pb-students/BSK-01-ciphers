@@ -4,7 +4,7 @@ const isKeyValid = (key: string) => /^(?:\d+-)*\d+$/.test(key)
     .sort((a, b) => a - b)
     .reduce((acc, a , b) => acc && a === b + 1, true)
 
-const matrixEncrypt = (message: string, key: string) => {
+const encrypt = (message: string, key: string) => {
   if (!isKeyValid(key)) throw new Error('Invalid key')
 
   const indexes = key.split('-').map((i: any) => i - 1)
@@ -19,7 +19,7 @@ const matrixEncrypt = (message: string, key: string) => {
   return transpose(indexes.map(i => chunks[i])).flat().join('')
 }
 
-const matrixDecrypt = (message: string, key: string) => {
+const decrypt = (message: string, key: string) => {
   if (!isKeyValid(key)) throw new Error('Invalid key')
 
   const indexes = key.split('-').map((i: any) => i - 1)
@@ -53,7 +53,7 @@ const matrixDecrypt = (message: string, key: string) => {
 }
 
 export default () => ({
-  matrixEncrypt,
-  matrixDecrypt
+  encrypt,
+  decrypt
 })
 
