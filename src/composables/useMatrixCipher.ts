@@ -1,5 +1,3 @@
-import messageToMatrix from "./messageToMatrix";
-
 const isKeyValid = (key: string) => /^(?:\d+-)*\d+$/.test(key)
   && key.split('-')
     .map(i => +i)

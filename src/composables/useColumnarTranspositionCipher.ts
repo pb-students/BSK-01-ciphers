@@ -1,6 +1,3 @@
-import messageToMatrix from "./messageToMatrix";
-import transpose from "./transpose";
-
 const encrypt = (message: string, key: string) => {
   const indexes = key.toUpperCase().split('')
     .map((char, index) => ({ char, index, code: char.charCodeAt(0) }))

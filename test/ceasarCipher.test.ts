@@ -1,4 +1,4 @@
-const { ceasarEncrypt, ceasarDecrypt } = useCeasarCrypt()
+const { ceasarEncrypt, ceasarDecrypt } = useCeasarCipher()
 
 
 test('encrypt with 2 column key', async () => {
