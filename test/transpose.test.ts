@@ -1,4 +1,4 @@
-test('transpose matrix', () => {
+test('transpose 3x3 matrix', () => {
   const matrix = [
     [1, 2, 3],
     [4, 5, 6],
@@ -12,7 +12,7 @@ test('transpose matrix', () => {
   ])
 })
 
-test('transpose matrix with empty last value', () => {
+test('transpose 3x3 matrix with empty last value', () => {
   const matrix = [
     [1, 2, 3],
     [4, 5, 6],
@@ -26,7 +26,7 @@ test('transpose matrix with empty last value', () => {
   ])
 })
 
-test('transpose matrix with half-empty last column', () => {
+test('transpose 3x3 matrix with half-empty last column', () => {
   const matrix = [
     [1, 2, 3],
     [4, 5, 6],
@@ -40,7 +40,7 @@ test('transpose matrix with half-empty last column', () => {
   ])
 })
 
-test('transpose non-square matrix', () => {
+test('transpose 4x2 matrix', () => {
   const matrix = [
     [1, 2],
     [3, 4],
@@ -54,7 +54,7 @@ test('transpose non-square matrix', () => {
   ])
 })
 
-test('transpose non-square matrix with half-empty column', () => {
+test('transpose 4x2 matrix with half-empty column', () => {
   const matrix = [
     [1, 2],
     [3, 4],
@@ -65,5 +65,19 @@ test('transpose non-square matrix with half-empty column', () => {
   expect(transpose(matrix)).to.deep.equal([
     [1, 3, 5, 7],
     [2, 4, null, null]
+  ])
+})
+
+test('transpose 2x4 matrix with empty last value', () => {
+  const matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7],
+  ]
+
+  expect(transpose(matrix)).to.deep.equal([
+    [1, 5],
+    [2, 6],
+    [3, 7],
+    [4, null]
   ])
 })
