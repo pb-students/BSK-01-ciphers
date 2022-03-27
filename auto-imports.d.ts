@@ -56,6 +56,7 @@ declare global {
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
+  const useCaesarCipher: typeof import('/src/composables/useCaesarCipher')['default']
   const useCeasarCipher: typeof import('/src/composables/useCeasarCipher')['default']
   const useColumnarTranspositionCipher: typeof import('/src/composables/useColumnarTranspositionCipher')['default']
   const useCssModule: typeof import('vue')['useCssModule']

@@ -1,11 +1,9 @@
-
-
 function mod(n: number, m: number) {
   return ((n % m) + m) % m;                                 //wlasna funkcja modulo dzialajaca dla ujemnych liczb
 }
 
 
-const ceasarEncrypt = (message: string, key: number) => {
+const encrypt = (message: string, key: number) => {
     const alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let result = ''
     message = message.toUpperCase();
@@ -20,11 +18,11 @@ const ceasarEncrypt = (message: string, key: number) => {
   }
  
   
-  const ceasarDecrypt = (message: string, key: number) => {
-    return ceasarEncrypt(message, key * -1)                               //tutaj poprostu zaszyfrowana wiadomosc szyfrujemy w druga strone i dostajemy odszyfrowana, nie wiem czy tak mozna         
+  const decrypt = (message: string, key: number) => {
+    return encrypt(message, key * -1)                               //tutaj poprostu zaszyfrowana wiadomosc szyfrujemy w druga strone i dostajemy odszyfrowana, nie wiem czy tak mozna
   }                                                                        
 
 export default () => ({
-    ceasarEncrypt,
-    ceasarDecrypt
+    encrypt,
+    decrypt
   })
