@@ -5,7 +5,7 @@ const encrypt = (message: string, key: string) => {
     .map(entry => entry.index)
 
   const matrix = messageToMatrix(message.replace(/ +/g, ''), indexes.length)
-  return indexes.map(i => matrix[i]).map(i => i.join('')).join('')
+  return indexes.map(i => matrix[i]).map(i => i ? i.join('') : '').join('')
 }
 
 const decrypt = (message: string, key: string) => {
@@ -21,7 +21,7 @@ const decrypt = (message: string, key: string) => {
 
   const letters = message.replace(/ +/g, '').split('')
   const columns = lengths.map((length: number) => letters.splice(0, length)).map((col: string[]) => col.join(''))
-  return transpose(indexes.map(i => columns[i].split(''))).flat().join('')
+  return transpose(indexes.map(i => columns[i] ? columns[i].split('') : [])).flat().join('')
 }
 
 export default () => ({
