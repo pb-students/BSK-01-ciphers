@@ -1,4 +1,4 @@
-const { encrypt, decrypt } = useMatrixCipher()
+const { encrypt, decrypt } = useMatrixACipher()
 const message = 'CRYPTOGRAPHYOSA'
 
 test('encrypt with 2 column key', async () => {
