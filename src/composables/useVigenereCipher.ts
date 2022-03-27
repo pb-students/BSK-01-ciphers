@@ -27,6 +27,10 @@ function isUpperCase (character: string) {
 function encrypt (message: string, key: string) {
   let result = ''
   let keyOffset = 0
+  if(key.length < message.length){
+    const repeat = Math.ceil(message.length / key.length)
+    key = key.repeat(repeat).slice(0, message.length)
+  }
 
   for (const char of message.toUpperCase()) {
     if (!isLetter(char)) {
