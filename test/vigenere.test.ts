@@ -31,4 +31,12 @@ test('decrypt3', async () => {
   expect(decrypt('RFJXMSIYNXRN', key)).toEqual(message)
 })
 
+test('encrypt4', async () => {
+  const key = 'POLITECHNIKAA'
+  expect(encrypt(message, key)).toEqual('RFJXMSIYNXRY')
+})
 
+test('decrypt4', async () => {
+  const key = 'POLITECHNIKAA'
+  expect(decrypt('RFJXMSIYNXRY', key)).toEqual(message)
+})
