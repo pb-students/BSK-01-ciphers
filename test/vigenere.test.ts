@@ -21,22 +21,22 @@ test('decrypt2', async () => {
   expect(decrypt('RFJXMSIYNXRY', key)).toEqual(message)
 })
 
-test('encrypt3', async () => {
+test('encrypt with key shorter than message', async () => {
   const key = 'POLITECHNIK'
   expect(encrypt(message, key)).toEqual('RFJXMSIYNXRN')
 })
 
-test('decrypt3', async () => {
+test('decrypt with key shorter than message', async () => {
   const key = 'POLITECHNIK'
   expect(decrypt('RFJXMSIYNXRN', key)).toEqual(message)
 })
 
-test('encrypt4', async () => {
+test('encrypt with key longer than message', async () => {
   const key = 'POLITECHNIKAA'
   expect(encrypt(message, key)).toEqual('RFJXMSIYNXRY')
 })
 
-test('decrypt4', async () => {
+test('decrypt with key longer than message', async () => {
   const key = 'POLITECHNIKAA'
   expect(decrypt('RFJXMSIYNXRY', key)).toEqual(message)
 })
