@@ -1,5 +1,3 @@
-import transpose from "./transpose";
-
 const createIndexes = (key: string) => key.toUpperCase().split('')
   .map((char, index) => ({ char, index, code: char.charCodeAt(0) }))
   .sort((a, b) => a.code - b.code)
@@ -26,8 +24,7 @@ const encrypt = (message: string, key: string) => {
   const table = createTable(message, indexes)
 
   const matrix = transpose(table)
-  return indexes.map(i => matrix[i.index])
-    .map((i: string[]) => i ? i.join('') : '').join('')
+  return indexes.map(i => matrix[i.index]).flat().join('')
 }
 
 const decrypt = (message: string, key: string) => {
