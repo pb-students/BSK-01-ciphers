@@ -6,7 +6,7 @@ const plaintext = refWithControl('')
 const encrypted = refWithControl('')
 
 const algs = [
-  { name: 'Rail fence', meta: 5, ...useRailFence() },
+  { name: 'Rail fence', meta: 3, ...useRailFence() },
   { name: 'Matrix (A)', meta: '3-1-4-2', ...useMatrixACipher() },
   { name: 'Columnar Transposition (B)', meta: 'CONVENIENCE', ...useColumnarTranspositionCipher() },
   { name: 'Write Row Read Column (C)', meta: 'CONVENIENCE', ...useMatrixCCipher() },
@@ -22,10 +22,7 @@ watch(encrypted, () => (lastAction.value = ACTION_DECRYPT))
 watch(plaintext, () => (lastAction.value = ACTION_ENCRYPT))
 
 const meta = ref(algs[0].meta)
-watch(algorithmName, () => {
-  lastAction.value = ACTION_ENCRYPT
-  meta.value = algorithm.value.meta
-})
+watch(algorithmName, () => (meta.value = algorithm.value.meta))
 
 const error = ref()
 watchEffect(() => {
@@ -74,12 +71,12 @@ watchEffect(() => {
       </label>
       <label>
         plaintext
-        <input v-model="plaintext" placeholder="plaintext" class="block mt-2">
+        <input v-model="plaintext" @paste="lastAction = ACTION_ENCRYPT" placeholder="plaintext" class="block mt-2">
       </label>
       <div class="justify-center text-xs flex items-center">to / from</div>
       <label>
         encrypted
-        <input v-model="encrypted" placeholder="encrypted" class="block mt-2">
+        <input v-model="encrypted" @paste="lastAction = ACTION_DECRYPT" placeholder="encrypted" class="block mt-2">
       </label>
     </div>
     <transition name="fade">
